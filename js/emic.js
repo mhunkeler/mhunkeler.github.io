@@ -8,27 +8,27 @@
 			[
 				google.visualization.arrayToDataTable([
 					['Label', 'Value'],
-					['Temperatura', 0]
+					['Temp(°C)', 0]
 					]),
 
 				google.visualization.arrayToDataTable([
 					['Label', 'Value'],
-					['Humedad', 0]
+					['Humedad(%)', 0]
 					]),
 					
 				google.visualization.arrayToDataTable([
 					['Label', 'Value'],
-					['CO2', 0]
+					['CO2(x100ppm)', 0]
 					]),
 
 				google.visualization.arrayToDataTable([
 					['Label', 'Value'],
-					['H. Suelo', 0]
+					['H. Suelo(%)', 0]
 					]),
 
 				google.visualization.arrayToDataTable([
 					['Label', 'Value'],
-					['Luz', 0]
+					['Luz(lux)', 0]
 					])
 
 
@@ -36,7 +36,7 @@
 
 
         var optionsGauges = {
-          width: 200, height: 200,
+          width: 300, height: 300,
           redFrom: 90, redTo: 100,
           yellowFrom:75, yellowTo: 90,
           minorTicks: 5
@@ -59,7 +59,7 @@
 		
 		var client2 = mqtt.connect('ws://openproject.rfindustrial.com:9090')
 
-client2.subscribe('/vivero/#')
+client2.subscribe('clientid/vivero/status/#')
 //client2.publish('/vivero/connected/', 'Hello mqtt')
 
 client2.on('message', function (topic, message) {
@@ -67,34 +67,78 @@ client2.on('message', function (topic, message) {
   console.log(topic + ":" + message.toString())
 	var value = parseFloat(message.toString());
 
-//  if (topic.endsWith("/TEMP"))
-//  {
-//	dataGauges[0].setValue(0, 1,  value / 100);
-//	chart0.draw(dataGauges[0], optionsGauges);
-//  }	  
 
-//  if (topic.endsWith("/HUM"))
-//  {
-//	dataGauges.setValue(1, 1,  value / 100);
-//	chart.draw(dataGauges, optionsGauges);
-//  }	  
-//  
-//  if (topic.endsWith("/CO2"))
-//  {
-//	dataGauges.setValue(2, 1,  value / 10);
-//	chart.draw(dataGauges, optionsGauges);
-//  }
-//  
-//  if (topic.endsWith("/MOIST"))
-//  {
-//	dataGauges.setValue(3, 1,  value / 10);
-//	chart.draw(dataGauges, optionsGauges);
-//  }	  
-//  if (topic.endsWith("/LUX"))
-//  {
-//	dataGauges.setValue(4, 1,  value / 100);
-//	chart.draw(dataGauges, optionsGauges);
-//  }	  
+
+
+
+
+
+
+//------------------------
+
+
+
+
+  // Comprobamos si el navegador soporta las notificaciones
+  if (!("Notification" in window)) {
+    alert("Este navegador no soporta las notificaciones del sistema");
+  }
+
+  // Comprobamos si ya nos habían dado permiso
+  else if (Notification.permission === "granted") {
+    // Si esta correcto lanzamos la notificación
+    //var notification = new Notification("Holiwis :D");
+	var notification = new Notification("Gracias majo! "+ topic + ":" + message.toString());
+  }
+
+  // Si no, tendremos que pedir permiso al usuario
+  else if (Notification.permission !== 'denied') {
+    Notification.requestPermission(function (permission) {
+      // Si el usuario acepta, lanzamos la notificación
+      if (permission === "granted") {
+        var notification = new Notification("Gracias majo!");
+      }
+    });
+  }
+
+
+//--------------------------
+
+
+
+
+
+
+
+
+  if (topic.endsWith("/temp1"))
+  {
+	dataGauges[0].setValue(0, 1,  value / 100);
+	chart0.draw(dataGauges[0], optionsGauges);
+  }	  
+
+  if (topic.endsWith("/hum1"))
+  {
+	dataGauges.setValue(1, 1,  value / 100);
+	chart.draw(dataGauges, optionsGauges);
+  }	  
+  
+  if (topic.endsWith("/CO2_1"))
+  {
+	dataGauges.setValue(2, 1,  value / 10);
+	chart.draw(dataGauges, optionsGauges);
+  }
+  
+  if (topic.endsWith("/moist1"))
+  {
+	dataGauges.setValue(3, 1,  value / 10);
+	chart.draw(dataGauges, optionsGauges);
+  }	  
+  if (topic.endsWith("/lux1"))
+  {
+	dataGauges.setValue(4, 1,  value / 100);
+	chart.draw(dataGauges, optionsGauges);
+  }	  
 
 });
 
