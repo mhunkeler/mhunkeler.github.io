@@ -23,6 +23,7 @@ var serial = {};
       { 'vendorId': 0x2fe3, 'productId': 0x00a },
       { 'vendorId': 0x8086, 'productId': 0xF8A1 },
       { 'vendorId': 0x04d8, 'productId': 0x00DF },
+      { 'vendorId': 0x10C4, 'productId': 0xEA60 },
     ];
     return navigator.usb.requestDevice({ 'filters': filters }).then(
       device => new serial.Port(device)
@@ -47,12 +48,8 @@ var serial = {};
     };
 
     return this.device_.open()
-        .then(() => {
-          if (this.device_.configuration === null) {
-            return this.device_.selectConfiguration(1);
-          }
-        })
-        .then(() => this.device_.claimInterface(this.interfaceNumber))
+        //.then(() => { if (this.device_.configuration === null) {  return this.device_.selectConfiguration(1);    }  })
+        .then(() => this.device_.claimInterface(0))
         .then(() => {
           readLoop();
         });
