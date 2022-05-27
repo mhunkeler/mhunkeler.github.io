@@ -1,123 +1,26 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>WebUSB Serial Sample Application</title>
-  </head>
+	<head>
+		<meta charset='utf-8'/>
+		<meta name="viewport" content="width=device-width"/>
+
+<script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+			
+<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"> </script>
+
+<script  type="module" src="JS/dashboard.js"> </script>
+<script  type="module" src="JS/gauge.js"> </script>
+<script  type="module" src="JS/switch.js"> </script>
+
+			<title>EMIC DashBoard</title>
+		<link rel='stylesheet' href='CSS/dashboard.css'/>
+	</head>
+	<body>
+	
+<emic-dashboard><emic-dash-panel direction="column" style="flex-grow: 1; display: flex; border-right: 1px solid black; border-left: 1px solid black;"><emic-widget-switch id="switch-2" value="0" style="border: 1px solid black;"></emic-widget-switch><emic-widget-switch id="switch-1" value="0" style="border: 1px solid black;"></emic-widget-switch><emic-widget-switch id="switch-1" value="0" style="border: 1px solid black;"></emic-widget-switch><emic-widget-gauge id="gauge-1" value="0" max="100" min="0"></emic-widget-gauge></emic-dash-panel><emic-dash-panel direction="column" style="flex-grow: 1; display: flex; border-left: 1px solid black; border-right: 1px solid black;"><emic-widget-switch id="switch-4" value="0" style="border: 1px solid black;"></emic-widget-switch><emic-widget-switch id="switch-2" value="0" style="border: 1px solid black;"></emic-widget-switch><emic-widget-switch id="switch-6" value="0" style="border: 1px solid black;"></emic-widget-switch><emic-widget-switch id="switch-5" value="0" style="border: 1px solid black;"></emic-widget-switch><emic-widget-switch id="switch-1" value="0" style="border: 1px solid black;"></emic-widget-switch><emic-widget-switch id="switch-3" value="0" style="border: 1px solid black;"></emic-widget-switch></emic-dash-panel></emic-dashboard>
 
 
-<body>
-  <script>
-var serial = {};
+		<script type="text/javascript" src="JS/emic.js"> </script>
+	</body>
+</html>
 
-(function() {
-  'use strict';
-
-  serial.getPorts = function() {
-    return navigator.usb.getDevices().then(devices => {
-      return devices.map(device => new serial.Port(device));
-    });
-  };
-
-  serial.requestPort = function() {
-    const filters = [
-      { 'vendorId': 0x2fe3, 'productId': 0x0100 },
-      { 'vendorId': 0x2fe3, 'productId': 0x00a },
-      { 'vendorId': 0x8086, 'productId': 0xF8A1 },
-      { 'vendorId': 0x04d8, 'productId': 0x00DF },
-      { 'vendorId': 0x10C4, 'productId': 0xEA60 },
-    ];
-    return navigator.usb.requestDevice({ 'filters': filters }).then(
-      device => new serial.Port(device)
-    );
-  }
-
-  serial.Port = function(device) {
-    this.device_ = device;
-  };
-
-  serial.Port.prototype.connect = function() {
-    let readLoop = () => {
-      const {
-        endpointNumber
-      } = this.device_.configuration.interfaces[0].alternate.endpoints[0]
-      this.device_.transferIn(endpointNumber, 64).then(result => {
-        this.onReceive(result.data);
-        readLoop();
-      }, error => {
-        this.onReceiveError(error);
-      });
-    };
-
-    return this.device_.open()
-        //.then(() => { if (this.device_.configuration === null) {  return this.device_.selectConfiguration(1);    }  })
-        .then(() => this.device_.claimInterface(0))
-        .then(() => {
-          readLoop();
-        });
-  };
-
-  serial.Port.prototype.disconnect = function() {
-    return this.device_.close();
-  };
-
-  serial.Port.prototype.send = function(data) {
-    const {
-      endpointNumber
-    } = this.device_.configuration.interfaces[0].alternate.endpoints[1]
-    return this.device_.transferOut(endpointNumber, data);
-  };
-})();
-
-let port;
-
-function connect() {
-  port.connect().then(() => {
-    port.onReceive = data => {
-      let textDecoder = new TextDecoder();
-      console.log("Received:", textDecoder.decode(data));
-      document.getElementById('output').value += textDecoder.decode(data);
-    }
-    port.onReceiveError = error => {
-      console.error(error);
-      document.querySelector("#connect").style = "visibility: initial";
-      port.disconnect();
-    };
-  });
-}
-
-function send(string) {
-  console.log("sending to serial:" + string.length);
-  if (string.length === 0)
-    return;
-  console.log("sending to serial: [" + string +"]\n");
-
-  let view = new TextEncoder('utf-8').encode(string);
-  console.log(view);
-  if (port) {
-    port.send(view+"\t\n\r");
-  }
-};
-
-window.onload = _ => {
-  document.querySelector("#connect").onclick = function() {
-    serial.requestPort().then(selectedPort => {
-      port = selectedPort;
-      this.style = "visibility: hidden";
-      connect();
-    });
-  }
-
-  document.querySelector("#submit").onclick = () => {
-    let source = document.querySelector("#editor").value;
-    send(source);
-  }
-}
-
-</script>
- <button id="connect" style="visibility: initial">Connect To WebUSB Device</button>
- <br><br><label for="title">Sender: </label> <br>
- <textarea id="editor", rows="25" cols="80" id="source">WebUSB!</textarea>
- <br><button id="submit">Send</button>
- <br><br>
- <label for="title">Receiver: </label> </br>
- <textarea id="output", rows="25" cols="80" id="source"></textarea>
-</body>
