@@ -30,7 +30,7 @@ class EmicWidgetLabel extends HTMLElement {
         }
 
         if (!this.hasAttribute('value')) {
-            this.setAttribute('value', this.getAttribute("id");
+            this.setAttribute('value', this.getAttribute("id"));
         }
 
         this.addEventListener('drop', this.eventDropListener);
