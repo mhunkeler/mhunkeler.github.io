@@ -148,13 +148,13 @@ class EmicDashPanel extends HTMLElement {
 
     connectedCallback() {
         const style = document.createElement("style");
-        style.innerHTML =
+        /*style.innerHTML =
             `
                 :host(:hover) {
                     border : 1px solid;
                 }
                 `;
-
+			*/
         this.shadowRoot.appendChild(style);
          
         //seccion.classList.add('show');
