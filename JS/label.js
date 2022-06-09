@@ -36,10 +36,10 @@
 
             div.innerHTML = this.getAttribute("value");
 
-            this.addEventListener('drop', this.eventDropListener);
-            this.addEventListener('dragover', this.eventDragoverListener);
-            this.addEventListener('dragleave', this.eventDragleaveListener);
-            this.addEventListener('click', this.eventClickListener);
+            //this.addEventListener('drop', this.eventDropListener);
+            //this.addEventListener('dragover', this.eventDragoverListener);
+            //this.addEventListener('dragleave', this.eventDragleaveListener);
+            //this.addEventListener('click', this.eventClickListener);
             
 
         }

@@ -159,7 +159,7 @@ class EmicDashPanel extends HTMLElement {
          
         //seccion.classList.add('show');
 
-        this.seccion.style['border']='1px solid';
+        this.seccion.style['border']='0px solid';
         this.seccion.style['display'] ='flex';
         this.seccion.style['transition'] ='0.6s ease-in-out';
         this.seccion.style['justify-content'] ='space-evenly';
@@ -173,7 +173,7 @@ class EmicDashPanel extends HTMLElement {
         this.style = "flex-grow:1;display:flex;"; // height: 100%;
         this.seccion.appendChild(document.createElement("slot"));
         this.shadowRoot.appendChild(this.seccion);
-        this.seccion.addEventListener('drop', this.enventDropListener);
+        //this.seccion.addEventListener('drop', this.enventDropListener);
 
 
         this.attributeChangedCallback = function(name, old, now) {
