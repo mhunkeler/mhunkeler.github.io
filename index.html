@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/CSS/DynaSheetStylesP.css" rel="stylesheet" />
     <title>Informe</title>
@@ -21,8 +22,12 @@
             font-family: 'Ubuntu', sans-serif;
             font-weight: 400;
             height: 100vh;
-            margin: auto;
+            margin: auto;  
             overflow-x: hidden;
+        }
+        .contenedor{
+            margin-left: 20px;;
+            margin-right: 20px;
         }
 
         table {
@@ -75,64 +80,112 @@
             -webkit-overflow-scrolling: touch;
             -ms-overflow-style: -ms-autohiding-scrollbar;
         }
+
+        .caja1{
+            width: 170px;
+        }
     </style>
 </head>
 
 <body>
+    <!--<div style="width:100vw"></div>-->
+    <div class="contenedor">
 
-
-
-
-
-
-
-
-    <div style="width:100vw">
-
-        
-<!--<div style="width:100vw">
-
-    <div style="width:100%;display: flex; flex-wrap: wrap ; justify-content:space-around;align-content:stretch; ">
-        
-        <h1>title</h1>
+        <div style="width:100%;display: flex;flex-wrap: wrap;justify-content: flex-start;flex-direction: row;">
+            <div clas="image">
+                <div class="col" style="width: 50%;">
+                      
+                    <img src="logo.png" alt="logo" style="width: 100%; height:20%; align-self: center" />
+                </div>
+            </div>
+          
         </div>
-</div>-->
 
 
 
-        <div style="width:100%;display: flex; flex-wrap: wrap ; justify-content:space-around;align-content:stretch; ">
-            <div>COMPAÑIA :Capsa</div>
-            <div>FECHA :02/02/2022 </div>
-            <div>POZO :C 142 </div>
-            <div>HORA :8:44 </div>
-            <div>BATERIA :ZONA 6 </div>
-            <div>YACIMIENTO :DIADEMA</div>
+
+
+
+<section>
+<hr>
+
+       
+        <div style="width:100%;display: flex; flex-direction:column">
+
+           <div style="width:100%;display: flex; flex-wrap: wrap ;justify-content:space-around;">
+                <div class="caja1">COMPAÑIA :Capsa</div>
+                <div class="caja1">BATERIA :ZONA 6 </div>
+                <div class="caja1">FECHA :02/02/2022 </div>
+            </div>
+
+            <div style="width:100%;display: flex; flex-wrap: wrap ;justify-content:space-around; "> 
+                <div  class="caja1">YACIMIENTO :DIADEMA</div>
+                <div class="caja1">POZO :C 142 </div>
+                <div class="caja1">HORA :8:44 </div>
+            </div>   
+            
         </div>
+
+
+
+        <hr>
+
+    </section>
+
+
+
+
+
+
+
+
 
         <section>
             <div style="width:100%;display: flex; flex-direction:column">
 
                 <div style="display: flex; flex-direction:column ">
-                    <h2>
-                        Datos de Instalacion
-                    </h2>
                     <div>
-                        <div style="display: flex; ">
-                            <div style="width:100%;display: flex; flex-direction:column ">
+                        <!-- display:flex; align-self: center;text-transform: uppercase;text-decoration-line: underline; -->
+                        <!--display:flex;align-self: center;text-transform: uppercase;text-decoration-line: underline;flex-direction: row;justify-content: space-around;-->
+                        <h2 style="display:flex;align-self: center;text-transform: uppercase;text-decoration-line: underline;flex-direction: row;justify-content: space-around;">
+                            Datos de la Instalacion
+                        </h2>
+                    </div>
+
+
+                    <div>
+                      
+
+
+
+                        <div style="display: flex; flex-direction:column ">
+                            <div style="display: flex; flex-direction:column ">
                                 <h3>
-                                    Unidad de Bombeo
+                                    UNIDAD DE BOMBEO
                                 </h3>
-                                <div>
-                                    Marca y Designacion API: LUFKIN M-912D-365-168
-                                </div>
-                                <div>
-                                    SENTIDO DE ROTACION: ANTIHORARIO
-                                </div>
-                                <div>
-                                    CARRERA :166.76 PULG ( 4.24 Mtrs.)
-                                </div>
-                                <div>
-                                    G.P.M :5.40
+                                <div class="table-responsive">
+                                    <table>
+                                        <tbody>
+                                         
+                                            <tr>
+                                                <td>MARCA Y DESIGNACION API: </td>
+                                                <td>LUFKIN M-912D-365-168</td>
+                                              
+                                            </tr>
+                                            <tr>
+                                                <td>SENTIDO DE ROTACION: </td>
+                                                <td>ANTIHORARIO</td>
+                                            </tr>
+                                            <tr>
+                                                <td>CARRERA: </td>
+                                                <td>166.86 PULG ( 4.24 Mtros. )</td>
+                                            </tr>
+                                            <tr>
+                                                <td>G.P.M: </td>
+                                                <td>5.40</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -140,7 +193,7 @@
                         <div style="display: flex; flex-direction:column ">
                             <div style="display: flex; flex-direction:column ">
                                 <h3>
-                                    Contrapesos
+                                    CONTRAPESOS
                                 </h3>
                                 <div class="table-responsive">
                                     <table>
