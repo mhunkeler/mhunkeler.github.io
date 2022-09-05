@@ -1,11 +1,6 @@
 
 import {
-    onGetTasks,
-    saveTask,
-    deleteTask,
-    getTask,
-    updateTask,
-    getTasks,
+    getTask,getTasks,getX
   } from "./firebase.js";
   
   const designacionApi = document.getElementById("designacion-api");
@@ -17,29 +12,23 @@ import {
   //const designacionApi = document.getElementById("designacion-api");
   //const tasksContainer = document.getElementById("tasks-container"); 
   
-  let editStatus = false;
-  let id = "";
   
   window.addEventListener("DOMContentLoaded", async (e) => {
-    // const querySnapshot = await getTasks();
-    // querySnapshot.forEach((doc) => {
-    //   console.log(doc.data());
-    // });
-  
-    onGetTasks((querySnapshot) => {
-      designacionApi.innerHTML = "";
-  
-      querySnapshot.forEach((doc) => {
-        const pozo = doc.data();
-  
-        designacionApi.innerHTML = pozo.UnidadBombeo.DesignacionApi;
-        sentidoRotacion.innerHTML = pozo.UnidadBombeo.SentidoRotacion;
-      });
-  
+    let params = new URLSearchParams(location.search);
+    var IdDina = params.get('id');
 
-  
-
+    const doc = await getTask(IdDina);
+    //const pozos = await getTasks();
+    const Dinamometria = doc.data()
+    const ConfigDoc = await getX(Dinamometria.Config);
+    const Config = ConfigDoc.data();
+   
+    console.log(doc);
+    
+    console.log(ConfigDoc)
+    console.log(Config)
+    designacionApi.innerHTML = Config.UnidadBombeo.DesignacionApi;
+    sentidoRotacion.innerHTML = Config.UnidadBombeo.SentidoRotacion;
     });
-  });
-  
+
 

@@ -36,21 +36,20 @@ export const db = getFirestore();
  * @param {string} title the title of the Task
  * @param {string} description the description of the Task
  */
-export const saveTask = (title, description) =>
-  addDoc(collection(db, "configDina"), { title, description });
+//export const saveTask = (title, description) =>  addDoc(collection(db, "configDina"), { title, description });
 
-export const onGetTasks = (callback) =>
-  onSnapshot(collection(db, "configDina"), callback);
+//export const onGetTasks = (callback) =>  onSnapshot(collection(db, "Dinamometrias"), callback);
 
 /**
  *
  * @param {string} id Task ID
  */
-export const deleteTask = (id) => deleteDoc(doc(db, "configDina", id));
+//export const deleteTask = (id) => deleteDoc(doc(db, "configDina", id));
 
-export const getTask = (id) => getDoc(doc(db, "configDina", id));
+export const getTask = (IdDina) => getDoc(doc(db, "Dinamometrias", IdDina));
 
-export const updateTask = (id, newFields) =>
-  updateDoc(doc(db, "configDina", id), newFields);
+export const getX = (id) => getDoc(id);
 
-export const getTasks = () => getDocs(collection(db, "configDina"));
+//export const updateTask = (id, newFields) =>  updateDoc(doc(db, "configDina", id), newFields);
+
+export const getTasks = () => getDocs(collection(db, "Dinamometrias"));
