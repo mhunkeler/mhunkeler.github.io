@@ -2,9 +2,10 @@
 <html lang="en">
 
 <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/CSS/DynaSheetStylesP.css" rel="stylesheet" />
-    <title>Micro Optimus II</title>
+    <!--link href="/CSS/DynaSheetStylesP.css" rel="stylesheet" /-->
+    <title>Informe</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript" > </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
@@ -21,8 +22,12 @@
             font-family: 'Ubuntu', sans-serif;
             font-weight: 400;
             height: 100vh;
-            margin: auto;
+            margin: auto;  
             overflow-x: hidden;
+        }
+        .contenedor{
+            margin-left: 20px;;
+            margin-right: 20px;
         }
 
         table {
@@ -75,55 +80,127 @@
             -webkit-overflow-scrolling: touch;
             -ms-overflow-style: -ms-autohiding-scrollbar;
         }
+
+
+   
+        .caja1{
+            width: 170px;
+        }
     </style>
 </head>
 
 <body>
-    <div style="width:100vw">
-        <div style="width:100%;display: flex; flex-wrap: wrap ; justify-content:space-between ">
-            <div>COMPAÑIA :Capsa</div>
-            <div>FECHA :02/02/2022 </div>
-            <div>POZO :C 142 </div>
-            <div>HORA :8:44 </div>
-            <div>BATERIA :ZONA 6 </div>
-            <div>YACIMIENTO :DIADEMA</div>
+    <!--<div style="width:100vw"></div>-->
+    <div class="contenedor">
+
+        <div style="width:100%;display: flex;flex-wrap: wrap;justify-content: flex-start;flex-direction: row;">
+            <div clas="image">
+                <div class="col" style="width: 50%;">
+                      
+                    <img src="logo.png" alt="logo" style="width: 100%; height:20%; align-self: center" />
+                </div>
+            </div>
+          
         </div>
+
+
+
+
+
+
+<section>
+<hr>
+
+       
+        <div style="width:100%;display: flex; flex-direction:column">
+
+           <div style="width:100%;display: flex; flex-wrap: wrap ;justify-content:space-around;">
+                <div class="caja1">COMPAÑIA :Capsa</div>
+                <div class="caja1">BATERIA :ZONA 6 </div>
+                <div class="caja1">FECHA :02/02/2022 </div>
+            </div>
+
+            <div style="width:100%;display: flex; flex-wrap: wrap ;justify-content:space-around; "> 
+                <div  class="caja1">YACIMIENTO :DIADEMA</div>
+                <div class="caja1">POZO :C 142 </div>
+                <div class="caja1">HORA :8:44 </div>
+            </div>   
+            
+        </div>
+
+
+
+        <hr>
+
+    </section>
+
+
+
+
+
+
+
+
 
         <section>
             <div style="width:100%;display: flex; flex-direction:column">
 
                 <div style="display: flex; flex-direction:column ">
-                    <h2>
-                        Datos de Instalacion
-                    </h2>
                     <div>
-                        <div style="display: flex; ">
-                            <div style="width:100%;display: flex; flex-direction:column ">
-                                <h3>
-                                    Unidad de Bombeo
-                                </h3>
-                                <div>
-                                    Marca y Designacion API: LUFKIN M-912D-365-168
-                                </div>
-                                <div>
-                                    SENTIDO DE ROTACION: ANTIHORARIO
-                                </div>
-                                <div>
-                                    CARRERA :166.76 PULG ( 4.24 Mtrs.)
-                                </div>
-                                <div>
-                                    G.P.M :5.40
-                                </div>
-                            </div>
-                        </div>
+                       
+                        <h2 style="display:flex;align-self: center;text-transform: uppercase;text-decoration-line: underline;flex-direction: row;justify-content: space-around;">
+                            Datos de la Instalacion
+                        </h2>
+                    </div>
 
-                        <div style="display: flex; flex-direction:column ">
+
+                    <!--START ROW 1 -->
+                    <div style="display: flex; flex-direction:row;justify-content: space-around;">
+
+                         <!--START #1 -->
+                        <div >
                             <div style="display: flex; flex-direction:column ">
                                 <h3>
-                                    Contrapesos
+                                    UNIDAD DE BOMBEO
                                 </h3>
                                 <div class="table-responsive">
                                     <table>
+                                        <tbody>
+                                          
+                                         
+                                            <tr>
+                                                <td>MARCA Y DESIGNACION API: </td>
+                                                <td id="designacion-api" >LUFKIN M-912D-365-168</td>
+                                              
+                                            </tr>
+                                            <tr>
+                                                <td>SENTIDO DE ROTACION: </td>
+                                                <td id="sentido-rotacion"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>CARRERA: </td>
+                                                <td>166.86 PULG ( 4.24 Mtros. )</td>
+                                            </tr>
+                                            <tr>
+                                                <td>G.P.M: </td>
+                                                <td>5.40</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                         <!--END #1 -->
+
+
+                        <!--START #2 -->
+                        <div>
+                            <div style="display: flex; flex-direction:column ">
+                                <h3>
+                                    CONTRAPESOS
+                                </h3>
+                                <div class="table-responsive">
+                                    <table style="margin-bottom: 0px;">
                                         <tbody>
                                             <tr>
                                                 <th>Tipo</th>
@@ -145,94 +222,178 @@
                                             </tr>
                                         </tbody>
                                     </table>
+                                    <p style="margin-top:0px;font-size: 15px;">La distancia es un valor promedio de las distancias de cada<br>
+                                        contrapeso medidas en Pulg. desde el extremo de la manivela</p>
                                 </div>
+                                
                             </div>
                         </div>
 
-
-                        <div class="col">
-                            <h3>
-                                Motor
-                            </h3>
-                            <div>
-                                Tipo: Nema
-                            </div>
-                            <div>
-                                Potencia: 75.00 HP
-                            </div>
-                            <div>
-                                Diam. Polea :240.00
-                            </div>
-                            <div>
-                                RPM: 0.00
-                            </div>
-                        </div>
-
-
-                        <div class="col">
-                            <h3>
-                                Bomba de Profundidad
-                            </h3>
-                            <div>
-                                Diametro: 1.75 "
-                            </div>
-                            <div>
-                                Profundidad: 2886.30 mts
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="col">
-                                <h3>
-                                    Sarta
-                                </h3>
-                                <div class="table-responsive">
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <th>Diametro(pulg)</th>
-                                                <th>Cantidad</th>
-                                                <th>Longitud(pie)</th>
-                                                <th>Peso(lb/pie)</th>
-                                                <th>Material</th>
-                                                <th>Tension de Rotura(psi)</th>
-                                                <th>Peso en aire(lb)</th>
-                                            </tr>
-                                            <tr>
-                                                <td>1.000</td>
-                                                <td>86.0</td>
-                                                <td>2580</td>
-                                                <td>2.904</td>
-                                                <td>Acero D</td>
-                                                <td>115000</td>
-                                                <td>7492</td>
-                                            </tr>
-                                            <tr>
-                                                <td>0.875</td>
-                                                <td>85.0</td>
-                                                <td>2550</td>
-                                                <td>2.224</td>
-                                                <td>Acero D</td>
-                                                <td>115000</td>
-                                                <td>5671</td>
-                                            </tr>
-                                            <tr>
-                                                <td>0.750</td>
-                                                <td>120.0</td>
-                                                <td>3600</td>
-                                                <td>1.634</td>
-                                                <td>Acero D 3/4 pin de 7/8</td>
-                                                <td>115000</td>
-                                                <td>5882</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                         <!--END #2 -->
 
                     </div>
+                <!-- END ROW 1 -->
+
+
+               
+
+
+
+                <!--START ROW 2 -->
+                <div style="display: flex; flex-direction:row;justify-content: space-around;">
+                    <!--START #3 -->
+                        <div style="display: flex; flex-direction:column;">
+                            
+                            <div style="display: flex;">
+                                <h3>
+                                    MOTOR
+                                </h3>
+                            </div>
+
+                            <div style="display: flex; flex-direction:row;justify-content: space-around;">
+
+
+                                <div style="display: flex;">
+                                <div style="display: flex; flex-direction:column ">
+                                
+                                    <div>
+                                        Tipo: Nema
+                                    </div>
+                                    <div>
+                                        Potencia: 75.00 HP
+                                    </div>
+                                </div>
+                                <div style="display: flex; flex-direction:column ">
+
+                                    <div>
+                                        Diam. Polea :240.00
+                                    </div>
+                                    <div>
+                                        RPM: 0.00
+                                    </div>
+                                </div>    
+
+                                
+                                </div>  
+                            </div>  
+   
+
+                        </div>
+                <!--END #3 --> 
+                
+                
+                <!--START #4 --> 
+                    <div class="col">
+                        <h3>
+                            BOMBA DE PROFUNDIDAD
+                        </h3>
+                        <div>
+                            Diametro: 1.75 "
+                        </div>
+                        <div>
+                            Profundidad: 2886.30 mts
+                        </div>
+                    </div>
+                <!--END #4 -->    
+
+
+
                 </div>
+                <!-- END ROW 2 -->
+
+
+                <!-- START ROW 3-->
+                <div style="display: flex; flex-direction:row;justify-content: space-evenly;">
+                    <div>
+                        <h3>
+                            SARTA
+                        </h3>
+                    </div>
+
+                    <div style="display: flex; flex-direction:column;">
+
+                     
+
+                        <div class="col table-responsive" style="width:100%;">
+                            <table>
+                                <tbody>
+                                    <th>
+                                        GRADO Y DESIGNACION API: D 86
+                                    </th>
+                                    
+                                    <tr>
+                                        <th>Diametro(pulg)</th>
+                                        <th>Cantidad</th>
+                                        <th>Longitud(pie)</th>
+                                        <th>Peso(lb/pie)</th>
+                                        <th>Material</th>
+                                        <th>Tension de Rotura(psi)</th>
+                                        <th>Peso en aire(lb)</th>
+                                    </tr>
+                                    <tr>
+                                        <td>1.000</td>
+                                        <td>86.0</td>
+                                        <td>2580</td>
+                                        <td>2.904</td>
+                                        <td>Acero D</td>
+                                        <td>115000</td>
+                                        <td>7492</td>
+                                    </tr>
+                                    <tr>
+                                        <td>0.875</td>
+                                        <td>85.0</td>
+                                        <td>2550</td>
+                                        <td>2.224</td>
+                                        <td>Acero D</td>
+                                        <td>115000</td>
+                                        <td>5671</td>
+                                    </tr>
+                                    <tr>
+                                        <td>0.750</td>
+                                        <td>120.0</td>
+                                        <td>3600</td>
+                                        <td>1.634</td>
+                                        <td>Acero D 3/4 pin de 7/8</td>
+                                        <td>115000</td>
+                                        <td>5882</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+                <!-- END ROW 3 -->
+
+
+                </div>
+
+
+
+
+
+
+        </div>
+
+
+
+            
         </section>
 
 
@@ -241,16 +402,19 @@
         <section>
             <div class="col" style="width: 100vw;">
                 <h2 class="text-center">
-                    Valores Medidos y Calculados
+                    VALORES MEDIDOS Y CALCULADOS
                 </h2>
                 <div class="col">
-                    <h3 class="text-center">
-                        Carta de Superficie
-                    </h3>
+                    
+                   
                     <div class="flex-center row"
                         style="width:95%;margin-left:auto; margin-right:auto; justify-content:space-around">
                         <div class="col">
-							<div id="main-plot-dyna"> </div>
+                            <h3 class="text-center">
+                                CARTA DE SUPERFICIE
+                            </h3>
+							<!--<div id="main-plot-dyna"> </div>-->
+                            <img src="https://picsum.photos/600" alt="" class="image" />
                         </div>
                         <div class="col" style="width: 55vw; margin-left: auto; padding:2vw">
                             <h3>DATOS DE PRODUCCIÓN</h3>
@@ -318,12 +482,13 @@
                 </div>
 
                 <div class="col">
-                    <h3 class="text-center">
-                        Valvulas
-                    </h3>
+                    
                     <div class="flex-center row"
                         style="width:95%;margin-left:auto;margin-right: auto;justify-content:space-around">
                         <div class="col">
+                            <h3 class="text-center">
+                                    VALVULAS
+                                </h3>
                             <img src="https://picsum.photos/600" alt="" class="image" />
                         </div>
                         <div class="col" style="width: 55vw; margin-left: auto; padding:2vw">
@@ -344,7 +509,9 @@
             </div>
         </section>
         <section>
+           
             <div class="col table-responsive" style="width:95vw; padding:2vw">
+                <h3>VALORES MEDIDOS Y CALCULADOS (CONT...)</h3>
                 <table>
                     <thead style="background-color:#CCC">
                         <tr>
@@ -778,7 +945,9 @@
         </section>
 
     </div>
-    <script src="emic2.js"></script>
+
+    <script src="./informe.js" type="module"></script>
+
 </body>
 
 </html>
