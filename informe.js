@@ -32,8 +32,8 @@ import {
       querySnapshot.forEach((doc) => {
         const pozo = doc.data();
   
-        designacionApi.innerHTML = pozo.designacionApi;
-        sentidoRotacion.innerHTML = pozo.sentidoRotacion;
+        designacionApi.innerHTML = pozo.UnidadBombeo.DesignacionApi;
+        sentidoRotacion.innerHTML = pozo.UnidadBombeo.SentidoRotacion;
       });
   
 
