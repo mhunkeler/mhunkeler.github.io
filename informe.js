@@ -7,6 +7,8 @@ import {
   const sentidoRotacion = document.getElementById("sentido-rotacion");
   const carreraApi = document.getElementById("carrera-api");
   const gpmApi = document.getElementById("gpm-api");
+
+  const porcentajeAgua = document.getElementById("porcentaje-agua");
   //const designacionApi = document.getElementById("designacion-api");
   //const designacionApi = document.getElementById("designacion-api");
   //const designacionApi = document.getElementById("designacion-api");
@@ -33,6 +35,8 @@ import {
     sentidoRotacion.innerHTML = Config.UnidadBombeo.SentidoRotacion;
     carreraApi.innerHTML = Config.UnidadBombeo.CarreraApi;
     gpmApi.innerHTML = Config.UnidadBombeo.GpmApi;
+    
+    porcentajeAgua.innerHTML = Config.DatosProduccion.PorcentajeAgua;
     
     });
 
