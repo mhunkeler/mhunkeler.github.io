@@ -11,7 +11,9 @@ import {
   
     // MOTOR
     const tipoMotor = document.getElementById("tipo-motor");
-    
+    const potenciaMotor = document.getElementById("potencia-motor");
+    const poleaMotor = document.getElementById("polea-motor");
+    const gpmMotor = document.getElementById("gpm-motor")
     // DATOS DE PRODUCCION
     const porcentajeAgua = document.getElementById("porcentaje-agua");
    
@@ -45,6 +47,9 @@ import {
     gpmApi.innerHTML = Config.UnidadBombeo.GpmApi;
     // MOTOR
     tipoMotor.innerHTML = Config.Motor.Tipo;
+    potenciaMotor.innerHTML = Config.Motor.Potencia;
+    poleaMotor.innerHTML = Config.Motor.DiametroPolea;
+    gpmMotor.innerHTML = Config.Motor.Rpm;
 
     // DATOS DE PRODUCCION
     porcentajeAgua.innerHTML = Config.DatosProduccion.PorcentajeAgua;
