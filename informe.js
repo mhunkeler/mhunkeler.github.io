@@ -119,7 +119,7 @@ import {
     pesoAireSarta3.innerHTML = Config.Sarta[20]; 
 
     // DATOS DE PRODUCCION
-    porcentajeAgua.innerHTML = Config.DatosProduccion.PorcentajeAgua;
+    porcentajeAgua.innerHTML = Dinamometria.DatosProduccion.PorcentajeAgua;
     
     
     });
