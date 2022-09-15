@@ -8,12 +8,15 @@ import {
     const sentidoRotacion = document.getElementById("sentido-rotacion");
     const carreraApi = document.getElementById("carrera-api");
     const gpmApi = document.getElementById("gpm-api");
-  
     // MOTOR
     const tipoMotor = document.getElementById("tipo-motor");
     const potenciaMotor = document.getElementById("potencia-motor");
     const poleaMotor = document.getElementById("polea-motor");
-    const gpmMotor = document.getElementById("gpm-motor")
+    const gpmMotor = document.getElementById("gpm-motor");
+    // BOMBA DE PROFUNDIDAD
+    const diametroProfundidad = document.getElementById("diametro-profundidad");
+    const bombaProfundidad = document.getElementById("bomba-profundidad")
+    
     // DATOS DE PRODUCCION
     const porcentajeAgua = document.getElementById("porcentaje-agua");
    
@@ -50,6 +53,9 @@ import {
     potenciaMotor.innerHTML = Config.Motor.Potencia;
     poleaMotor.innerHTML = Config.Motor.DiametroPolea;
     gpmMotor.innerHTML = Config.Motor.Rpm;
+    // BOMBA DE PROFUNDIDAD
+    diametroProfundidad.innerHTML = Config.BombaProfundidad.Diametro;
+    bombaProfundidad.innerHTML = Config.BombaProfundidad.Profundidad;
 
     // DATOS DE PRODUCCION
     porcentajeAgua.innerHTML = Config.DatosProduccion.PorcentajeAgua;
