@@ -3,6 +3,64 @@ import {
     getTask,getTasks,getX
   } from "./firebase.js";
   
+    var mainPlotDynaObj = {};
+
+    var mainPlotDynaData = [
+      {
+          x: [],
+          y: [],
+          mode: "lines",
+          line: {
+              color: 'rgb( 0, 0, 255)',
+              width: 2
+          }
+      },
+      {
+          x: [],
+          y: [],
+          mode: "lines",
+          line: {
+              color: 'rgb(128, 128, 128)',
+              width: 3
+          }
+  
+      },
+      {
+          x: [],
+          y: [],
+          mode: "lines",
+          line: {
+              color: 'rgb( 128, 0, 128 )',
+              width: 2
+          }
+  
+      },
+      {
+          x: [],
+          y: [],
+          mode: "lines",
+          line: {
+              color: 'rgb(128, 128, 128)',
+              width: 3
+          }
+  
+      }
+  ];
+  
+
+    var mainPlotDynalayout = {
+      xaxis: { range: [-20, 200] }, //, title: "Posición (pulgadas)"
+      yaxis: { range: [-5000, 30000] }, //, title: "Fuerza (libras)" 
+      //title: `Dinamometria Pozo:${obj.pozo.name}`
+      margin: { t:20, b:30, l:30, r:20 },
+      showlegend: false,
+      legend: {
+          x: 1,
+          xanchor: 'right',
+          y: 1
+      }
+  };
+
     // UNIDAD DE BOMBEO
     const designacionApi = document.getElementById("designacion-api");
     const sentidoRotacion = document.getElementById("sentido-rotacion");
@@ -55,6 +113,9 @@ import {
   //const designacionApi = document.getElementById("designacion-api");
   //const tasksContainer = document.getElementById("tasks-container"); 
   
+  const cartaSupPlot = document.getElementById("main-plot-dyna");
+
+
   window.addEventListener("DOMContentLoaded", async (e) => {
     let params = new URLSearchParams(location.search);
     var IdDina = params.get('id');
@@ -122,6 +183,16 @@ import {
     porcentajeAgua.innerHTML = Dinamometria.DatosProduccion.PorcentajeAgua;
     
     
+    mainPlotDynaData[0].name = "ultimo";
+    mainPlotDynaData[0].x = Dinamometria.CartaSuperficie.position;
+    mainPlotDynaData[0].y = Dinamometria.CartaSuperficie.force;
+
+    //mainPlotDynaData[2].x = misDinas[ultimo].dHposition;
+    //mainPlotDynaData[2].y = misDinas[ultimo].dHforce;
+
+    Plotly.newPlot('main-plot-dyna', mainPlotDynaData, mainPlotDynalayout);
+
+
     });
 
 
