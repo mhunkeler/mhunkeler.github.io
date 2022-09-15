@@ -110,7 +110,7 @@ import {
     tensionSarta2.innerHTML = Config.Sarta[12]; 
     pesoAireSarta2.innerHTML = Config.Sarta[13]; 
 
-    diametroSarta2.innerHTMl = Config.Sarta[14]; 
+    diametroSarta3.innerHTMl = Config.Sarta[14]; 
     cantidadSarta3.innerHTML = Config.Sarta[15]; 
     longitudSarta3.innerHTML = Config.Sarta[16]; 
     pesoSarta3.innerHTML = Config.Sarta[17]; 
