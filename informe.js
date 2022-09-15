@@ -8,6 +8,10 @@ import {
     const sentidoRotacion = document.getElementById("sentido-rotacion");
     const carreraApi = document.getElementById("carrera-api");
     const gpmApi = document.getElementById("gpm-api");
+    //CONTRAPESOS
+    const tipoContrapeso1 = document.getElementById("tipo-1");
+
+
     // MOTOR
     const tipoMotor = document.getElementById("tipo-motor");
     const potenciaMotor = document.getElementById("potencia-motor");
@@ -48,6 +52,8 @@ import {
     sentidoRotacion.innerHTML = Config.UnidadBombeo.SentidoRotacion;
     carreraApi.innerHTML = Config.UnidadBombeo.CarreraApi;
     gpmApi.innerHTML = Config.UnidadBombeo.GpmApi;
+    //CONTRAPESOS
+    tipoContrapeso1.innerHTML = Config.Contrapesos[0];
     // MOTOR
     tipoMotor.innerHTML = Config.Motor.Tipo;
     potenciaMotor.innerHTML = Config.Motor.Potencia;
