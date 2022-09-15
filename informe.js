@@ -94,7 +94,7 @@ import {
     diametroProfundidad.innerHTML = Config.BombaProfundidad.Diametro;
     bombaProfundidad.innerHTML = Config.BombaProfundidad.Profundidad;
     // SARTA
-    diametroSarta1.innerHTMl = Config.Sarta[0]; 
+    diametroSarta1.innerHTML = Config.Sarta[0]; 
     cantidadSarta1.innerHTML = Config.Sarta[1]; 
     longitudSarta1.innerHTML = Config.Sarta[2]; 
     pesoSarta1.innerHTML = Config.Sarta[3]; 
@@ -102,7 +102,7 @@ import {
     tensionSarta1.innerHTML = Config.Sarta[5]; 
     pesoAireSarta1.innerHTML = Config.Sarta[6]; 
 
-    diametroSarta2.innerHTMl = Config.Sarta[7]; 
+    diametroSarta2.innerHTML = Config.Sarta[7]; 
     cantidadSarta2.innerHTML = Config.Sarta[8]; 
     longitudSarta2.innerHTML = Config.Sarta[9]; 
     pesoSarta2.innerHTML = Config.Sarta[10]; 
@@ -110,7 +110,7 @@ import {
     tensionSarta2.innerHTML = Config.Sarta[12]; 
     pesoAireSarta2.innerHTML = Config.Sarta[13]; 
 
-    diametroSarta3.innerHTMl = Config.Sarta[14]; 
+    diametroSarta3.innerHTML = Config.Sarta[14]; 
     cantidadSarta3.innerHTML = Config.Sarta[15]; 
     longitudSarta3.innerHTML = Config.Sarta[16]; 
     pesoSarta3.innerHTML = Config.Sarta[17]; 
