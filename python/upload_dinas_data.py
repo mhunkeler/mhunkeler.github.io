@@ -29,5 +29,13 @@ db = firestore.client()
 query = db.collection('Dinamometrias')
 #query.get()
 
-for eco in query.stream():
-    print('ID : {} --> {} '.format(eco.id , eco.to_dict()))
+
+# for eco in query.stream():
+#     print('ID : {} --> {} '.format(eco.id , eco.to_dict()))
+
+
+query.push({'tipo':'NoteBook','marca':'Acer','modelo':'one'})
+
+
+
+   
